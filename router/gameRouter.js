@@ -45,9 +45,10 @@ router.post ('/create-new-game', function (req, res){
        };
       games.push (newGameObj);
       res.json ({payload: games});
-   };
+   }
+});
 
-   router.put ("/update-game/:id", function (req, res){
+router.put ("/update-game/:id", function (req, res){
        const {game, description} = req.body;
        if (game.length === 0 || description.length === 0){
            res.status(500).json ({
@@ -66,14 +67,14 @@ router.post ('/create-new-game', function (req, res){
        }
    });
 
-   router.delete ("/delete-game/:id", function(req,res){
-       let foundGameIndex = games.findIndex((item)=> itme.id === req.params.id);
-       if (foundGameindex === -1){
+router.delete ("/delete-game/:id", function(req,res){
+       let foundGameIndex = games.findIndex((item) => item.id === req.params.id);
+       if (foundGameIndex === -1){
            res.json ({message: "game does not exits, can not delete!"})
        }else{
            games.splice(foundGameIndex, 1);
            res.json({ payload: games});
        }
    });
-
-module.exports = router;
+   
+   module.exports = router;

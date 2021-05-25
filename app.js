@@ -15,3 +15,4 @@ app.use ("/api/game", gameRouter)
 app.listen (3000, function (){
     console.log (`Server started at PORT ${3000}`)
 })
+module.exports = app;
